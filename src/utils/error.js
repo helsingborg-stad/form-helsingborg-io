@@ -25,6 +25,11 @@ class InternalServerError extends DomainError {
     super(msg, 500);
   }
 }
+class ResourceNotFoundError extends DomainError {
+  constructor(msg) {
+    super(msg, 404);
+  }
+}
 
 class ValidationError extends DomainError {
   constructor(msg, original) {
@@ -52,4 +57,5 @@ module.exports = {
   InternalServerError,
   ValidationError,
   WeakValidationError,
+  ResourceNotFoundError,
 };

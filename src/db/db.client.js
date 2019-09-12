@@ -1,4 +1,5 @@
 const config = require('config');
+const bookshelf = require('bookshelf');
 
 const MYSQL_HOST = config.get('MYSQL.HOST');
 const MYSQL_PORT = config.get('MYSQL.PORT');
@@ -34,6 +35,7 @@ const extractQueryParts = (obj) => {
 };
 
 module.exports = {
+  bookshelf: bookshelf(client),
   client,
   extractQueryParts,
 };
