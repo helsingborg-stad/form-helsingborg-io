@@ -1,20 +1,18 @@
 const { client, extractQueryParts } = require('../../db/db.client');
 
-const Persons = () => client('persons');
-
-const reset = () => Persons()
+const reset = table => client(table)
   .truncate();
 
-const query = async (params = {}) => {
+const query = async (table, params = {}) => {
   const { where, limit } = extractQueryParts(params);
 
-  return Persons()
+  return client(table)
     .select()
     .where(where)
     .limit(limit || 10);
 };
 
-const create = entity => Persons()
+const create = (table, entity) => client(table)
   .insert(entity);
 
 module.exports = {

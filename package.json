@@ -1,5 +1,5 @@
 {
-  "name": "helsingborg-io-boilerplate",
+  "name": "formserivec-helsingborg-io",
   "version": "0.0.1",
   "description": "Boilerplate repository for nodejs based LABS projects.",
   "main": "server.js",
@@ -29,6 +29,7 @@
     "@hapi/joi": "^15.0.1",
     "axios": "^0.18.0",
     "body-parser": "^1.19.0",
+    "bookshelf": "^0.15.1",
     "config": "^3.1.0",
     "dotenv": "^8.0.0",
     "easy-soap-request": "^2.5.0",
@@ -36,6 +37,7 @@
     "express-pino-logger": "^4.0.0",
     "knex": "^0.17.1",
     "mysql": "^2.17.1",
+    "objection": "^1.6.9",
     "pino": "^5.12.5",
     "redis": "^2.8.0",
     "soap": "^0.27.1",

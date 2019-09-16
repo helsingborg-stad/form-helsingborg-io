@@ -2,7 +2,7 @@
 const config = require('config');
 const path = require('path');
 
-const knexConfig = config.util.loadFileConfigs(path.join(__dirname, '/../../config'));
+const knexConfig = config.util.loadFileConfigs(path.join(__dirname, './config'));
 config.util.setModuleDefaults('KNEX', knexConfig);
 
 const MYSQL_HOST = config.get('KNEX.MYSQL.HOST');
@@ -23,5 +23,8 @@ module.exports = {
       database: MYSQL_DB,
     },
     pool: { min: 0, max: Number(MYSQL_CONNECTION_LIMIT) },
+    migrations: {
+      directory: './src/db/migrations',
+    },
   },
 };

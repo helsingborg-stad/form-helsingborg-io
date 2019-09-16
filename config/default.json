@@ -3,14 +3,14 @@
     "LEVEL": "trace"
   },
   "SERVER": {
-    "PORT": "env_placeholder"
+    "PORT": "3010"
   },
   "MYSQL": {
     "HOST": "127.0.0.1",
     "PORT": 3306,
-    "DB": "hbgworks_db",
+    "DB": "formservice_helsingborg_io",
     "CONNECTION_LIMIT": 10,
-    "USER": "hbgworks_user",
-    "PASSWORD": "hbgworks_pw"
+    "USER": "root",
+    "PASSWORD": "helsingborg"
   }
 }
