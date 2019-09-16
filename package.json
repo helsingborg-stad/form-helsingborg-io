@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@hapi/joi": "^15.0.1",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "body-parser": "^1.19.0",
     "bookshelf": "^0.15.1",
     "config": "^3.1.0",
@@ -35,12 +35,14 @@
     "easy-soap-request": "^2.5.0",
     "express": "^4.16.4",
     "express-pino-logger": "^4.0.0",
+    "json-schema-ref-parser": "^7.1.1",
     "knex": "^0.17.1",
     "mysql": "^2.17.1",
     "objection": "^1.6.9",
     "pino": "^5.12.5",
     "redis": "^2.8.0",
     "soap": "^0.27.1",
+    "swagger-parser": "^8.0.1",
     "swagger-ui-express": "^4.0.2",
     "ws": "^7.0.0"
   }
