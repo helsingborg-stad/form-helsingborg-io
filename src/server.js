@@ -4,7 +4,7 @@ const pino = require('express-pino-logger');
 const swaggerUi = require('swagger-ui-express');
 const bodyParser = require('body-parser');
 const $RefParser = require('json-schema-ref-parser');
-const swaggerDocument = require('../swagger/swagger.json');
+const swaggerDocument = require('../swagger/swagger.js');
 const routes = require('./components/form/form.api');
 const logger = require('./utils/logger');
 
