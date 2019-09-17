@@ -3,7 +3,7 @@ const config = require('config');
 const pino = require('express-pino-logger');
 const swaggerUi = require('swagger-ui-express');
 const bodyParser = require('body-parser');
-const $RefParser = require('json-schema-ref-parser');
+const jsonSchemaRefParser = require('json-schema-ref-parser');
 const swaggerDocument = require('../swagger/swagger.js');
 const routes = require('./components/form/form.api');
 const logger = require('./utils/logger');
@@ -23,7 +23,7 @@ app.use(pino({ logger }));
 
 app.use(routes());
 
-$RefParser.dereference(swaggerDocument, (err, schema) => {
+jsonSchemaRefParser.dereference(swaggerDocument, (err, schema) => {
   if (err) {
     console.error(err);
   } else {
