@@ -1,5 +1,5 @@
+require('dotenv').config();
 const express = require('express');
-const config = require('config');
 const pino = require('express-pino-logger');
 const swaggerUi = require('swagger-ui-express');
 const bodyParser = require('body-parser');
@@ -11,9 +11,9 @@ const logger = require('./utils/logger');
 const app = express();
 
 /**
- * Config
+ * CONFIG
  */
-const SERVER_PORT = process.env.PORT || config.get('SERVER.PORT');
+const { PORT } = process.env;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -22,6 +22,10 @@ app.use(bodyParser.json());
 app.use(pino({ logger }));
 
 app.use(routes());
+
+/**
+ * Swagger
+ */
 
 jsonSchemaRefParser.dereference(swaggerDocument, (err, schema) => {
   if (err) {
@@ -38,8 +42,8 @@ jsonSchemaRefParser.dereference(swaggerDocument, (err, schema) => {
  */
 
 // Listen on port specfied in env-file.
-const server = app.listen(SERVER_PORT,
-  () => logger.info(`Form service listening on port ${SERVER_PORT}!`));
+const server = app.listen(PORT,
+  () => logger.info(`Form service listening on port ${PORT}!`));
 
 // Export server to use it in tests.
 module.exports = server;
