@@ -11,6 +11,9 @@ module.exports = {
     migrations: {
       directory: './src/db/migrations',
     },
+    seeds: {
+      directory: './src/db/seeds/dev',
+    },
   },
   production: {
     client: 'mysql',
@@ -18,6 +21,9 @@ module.exports = {
     pool: { min: 0, max: Number(MYSQL_CONNECTION_LIMIT) },
     migrations: {
       directory: './src/db/migrations',
+    },
+    seeds: {
+      directory: './src/db/seeds/prod',
     },
   },
 };
