@@ -1,7 +1,7 @@
 const fs = require('fs');
 
-fs.createReadStream('.sample-env')
+fs.createReadStream('example.env')
   .pipe(fs.createWriteStream('.env'));
 
-fs.createReadStream('.sample-env')
+fs.createReadStream('example.env')
   .pipe(fs.createWriteStream('.env.test'));
