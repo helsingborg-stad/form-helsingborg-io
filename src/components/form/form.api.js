@@ -9,8 +9,9 @@ const routes = () => {
     jsonapi: {
       version: '1.0',
       meta: {
-        service: 'fromservice-helsingborg-io',
+        service: 'form-helsingborg-io',
         owner: 'Helsingborg Stad',
+        description: 'Defines templates of questions and answers for each e-service.',
       },
     },
   }));
