@@ -12,9 +12,6 @@ describe('Form', () => {
     server.close();
   });
 
-  beforeEach(async () => {
-  });
-
   it('should return json on GET with faked query', async () => chai
     .request(server)
     .get('/forms')
