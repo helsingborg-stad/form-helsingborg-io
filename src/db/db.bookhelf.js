@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 const { bookshelf } = require('./db.client');
 
 bookshelf.plugin('registry');
@@ -10,15 +11,15 @@ const Forms = bookshelf.Model.extend({
 const Questions = bookshelf.Model.extend({
   tableName: 'questions',
   form() { return this.belongsTo(Forms); },
-  validations() { return this.hasMany(Validations); },
-  optionGroup() { return this.hasOne(OptionGroups); },
+  validations() { return this.belongsToMany(Validations); },
+  optionGroup() { return this.belongsTo(OptionGroups); },
   choices() { return this.belongsToMany(OptionChoices); },
-  type() { return this.hasOne(QuestionTypes); },
+  type() { return this.belongsTo(QuestionTypes); },
 });
 
 const QuestionTypes = bookshelf.Model.extend({
   tableName: 'question_types',
-  questions() { return this.belongsToMany(Questions); },
+  questions() { return this.hasMany(Questions); },
 });
 
 const Validations = bookshelf.Model.extend({
@@ -28,7 +29,7 @@ const Validations = bookshelf.Model.extend({
 
 const OptionGroups = bookshelf.Model.extend({
   tableName: 'option_groups',
-  questions() { return this.belongsToMany(Questions); },
+  questions() { return this.hasMany(Questions); },
 });
 
 const OptionChoices = bookshelf.Model.extend({
