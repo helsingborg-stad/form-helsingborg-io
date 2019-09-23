@@ -45,6 +45,21 @@ const routes = () => {
     }
   });
 
+  router.get('/forms/:id/questions', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const data = await dal.query.formQuestions(id);
+
+      const convertedData = await jsonapi.convert.queryData(data);
+      const response = await jsonapi.serializer.serialize('question', convertedData);
+
+      return res.json(response);
+    } catch (e) {
+      const errorResponse = await jsonapi.serializer.serializeError(e);
+      return res.json(errorResponse);
+    }
+  });
+
   return router;
 };
 

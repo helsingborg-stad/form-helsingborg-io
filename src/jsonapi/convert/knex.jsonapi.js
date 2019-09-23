@@ -9,6 +9,8 @@ const createDataObject = (data) => {
       const relation = relations[key];
       if (relation.length > 0) {
         resourceData[key] = relation.map(item => ({ ...item.attributes }));
+      } else {
+        resourceData[key] = { ...relation.attributes };
       }
     });
   }
@@ -24,7 +26,6 @@ const createObjectFromKnexQuery = (data) => {
   } else {
     dataObject = createDataObject(data);
   }
-
   return dataObject;
 };
 
