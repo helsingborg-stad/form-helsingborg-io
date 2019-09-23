@@ -6,7 +6,7 @@ const queryForms = async () => {
   try {
     const formData = await forms.fetchAll({ withRelated: ['questions'] });
     if (!formData) {
-      throw new ResourceNotFoundError();
+      throw new ResourceNotFoundError("No forms could be found");
     }
     return formData;
   } catch (e) {
@@ -19,7 +19,7 @@ const queryForm = async (id) => {
   try {
     const formData = await forms.where('id', id).fetch({ withRelated: ['questions'] });
     if (!formData) {
-      throw new ResourceNotFoundError();
+      throw new ResourceNotFoundError(`The form with id ${id} could not be found`);
     }
     return formData;
   } catch (error) {

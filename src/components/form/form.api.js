@@ -1,6 +1,6 @@
 const express = require('express');
 const dal = require('./form.dal');
-const { createJsonapiResponse } = require('../../utils/jsonapi');
+const jsonapi = require('../../jsonapi/index');
 
 const routes = () => {
   const router = express.Router();
@@ -16,14 +16,17 @@ const routes = () => {
     },
   }));
 
-  // Here we register what endpoints we want.
   router.get('/forms', async (req, res) => {
     try {
       const data = await dal.query.forms(req);
-      const response = await createJsonapiResponse(req, 'forms', data);
+
+      const convertedData = await jsonapi.convert.queryData(data);
+      const response = await jsonapi.serializer.serialize('form', convertedData);
+
       return res.json(response);
     } catch (e) {
-      return res.status(e.status || 500).json(e);
+      const errorResponse = await jsonapi.serializer.serializeError(e);
+      return res.json(errorResponse);
     }
   });
 
@@ -31,10 +34,14 @@ const routes = () => {
     try {
       const { id } = req.params;
       const data = await dal.query.form(id);
-      const response = await createJsonapiResponse(req, 'forms', data);
+
+      const convertedData = await jsonapi.convert.queryData(data);
+      const response = await jsonapi.serializer.serialize('form', convertedData);
+
       return res.json(response);
     } catch (e) {
-      return res.status(e.status || 500).json(e);
+      const errorResponse = await jsonapi.serializer.serializeError(e);
+      return res.json(errorResponse);
     }
   });
 
