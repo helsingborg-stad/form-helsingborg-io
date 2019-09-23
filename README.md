@@ -1,20 +1,23 @@
-# labs-node-js-boilerplate
-Boilerplate repository for nodejs based LABS projects.
+# form-helsingborg-io
+Repository for requesting forms with questions ans logics.
 
-This boilerplats is built on nodejs and express. It includes an example that showcases
-everything from how the app is set up to routing and validation.
+This microservice is built on nodejs and express.
 
 ## Development
 Prerequisite: local MySQL server running
 
 1. Clone repository
 2. Install dependencies with npm install
-3. Create .env-file in the root folder with these properties
+3. run ```npm run setup``` (this will create .env and .env.test files)
+4. Change the variabels in .env to match your development enviorment
 ````
-   PORT=3000 #(or any other port you prefer)
-   LOG_LEVEL=info #(trace, debug, info, warn, error, fatal, silent)
+   PORT=3010 #(or any other port you prefer)
+   LOG_LEVEL=trace #(trace, debug, info, warn, error, fatal, silent)
+   MYSQL_CONNECTION_STRING=mysql://usr:pwd@host:port/dbname #(enter your local db credentials)
+   MYSQL_CONNECTION_LIMIT=10
 ````
-4. run ```npm run migrate:latest``` (this will migrate your mysql schemas to the latest version)
+4. run ```knex migrate:latest``` (this will migrate your mysql schemas to the latest version)
+4. run ```knex seed:run``` (this will populate your mysql databse with mock data)
 5. Run project with ```npm run dev```
 
 ## Documentation
