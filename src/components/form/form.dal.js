@@ -1,5 +1,5 @@
 const logger = require('../../utils/logger');
-const { forms } = require('../../db/db.bookhelf');
+const { forms, questions } = require('../../db/db.bookhelf');
 const { ResourceNotFoundError } = require('../../utils/error');
 
 const queryForms = async () => {
@@ -28,10 +28,26 @@ const queryForm = async (id) => {
   }
 };
 
+const queryFormQuestions = async (id) => {
+  try {
+    const formData = await questions.where('form_id', id).fetchAll({
+      withRelated: ['form', 'validations', 'choices', 'optionGroup', 'type'],
+    });
+    if (!formData) {
+      throw new ResourceNotFoundError();
+    }
+    return formData;
+  } catch (e) {
+    logger.error(e);
+    throw e;
+  }
+};
+
 
 const query = {
   forms: queryForms,
   form: queryForm,
+  formQuestions: queryFormQuestions,
 };
 
 module.exports = {

@@ -4,6 +4,7 @@ exports.up = (knex, Promise) => knex.schema.createTable('questions', (t) => {
   t.string('question_name');
   t.string('question_hint');
   t.string('question_description');
+  t.integer('question_position');
 
   t.boolean('question_required');
   t.boolean('question_multiple_answers');
@@ -18,4 +19,4 @@ exports.up = (knex, Promise) => knex.schema.createTable('questions', (t) => {
   t.foreign('option_group_id').references('option_groups.id');
 });
 
-exports.down = (knex, Promise) => knex.schema.dropTable('questions');
+exports.down = (knex, __) => knex.schema.dropTable('questions');
