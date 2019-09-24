@@ -26,6 +26,7 @@ const createObjectFromKnexQuery = (data) => {
   } else {
     dataObject = createDataObject(data);
   }
+
   return dataObject;
 };
 

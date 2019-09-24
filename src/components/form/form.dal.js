@@ -6,7 +6,7 @@ const queryForms = async () => {
   try {
     const formData = await forms.fetchAll({ withRelated: ['questions'] });
     if (!formData) {
-      throw new ResourceNotFoundError('No forms could be found');
+      throw new ResourceNotFoundError("No forms could be found");
     }
     return formData;
   } catch (e) {
