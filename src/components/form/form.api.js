@@ -1,6 +1,5 @@
 const express = require('express');
 const dal = require('./form.dal');
-const jsonapi = require('../../jsonapi/index');
 
 const routes = () => {
   const router = express.Router();
@@ -17,47 +16,18 @@ const routes = () => {
   }));
 
   router.get('/forms', async (req, res) => {
-    try {
-      const data = await dal.query.forms(req);
-
-      const convertedData = await jsonapi.convert.queryData(data);
-      const response = await jsonapi.serializer.serialize('form', convertedData);
-
-      return res.json(response);
-    } catch (e) {
-      const errorResponse = await jsonapi.serializer.serializeError(e);
-      return res.json(errorResponse);
-    }
+    const response = await dal.read.forms(req, res);
+    return response;
   });
 
   router.get('/forms/:id', async (req, res) => {
-    try {
-      const { id } = req.params;
-      const data = await dal.query.form(id);
-
-      const convertedData = await jsonapi.convert.queryData(data);
-      const response = await jsonapi.serializer.serialize('form', convertedData);
-
-      return res.json(response);
-    } catch (e) {
-      const errorResponse = await jsonapi.serializer.serializeError(e);
-      return res.json(errorResponse);
-    }
+    const response = await dal.read.form(req, res);
+    return response;
   });
 
   router.get('/forms/:id/questions', async (req, res) => {
-    try {
-      const { id } = req.params;
-      const data = await dal.query.formQuestions(id);
-
-      const convertedData = await jsonapi.convert.queryData(data);
-      const response = await jsonapi.serializer.serialize('question', convertedData);
-
-      return res.json(response);
-    } catch (e) {
-      const errorResponse = await jsonapi.serializer.serializeError(e);
-      return res.json(errorResponse);
-    }
+    const response = await dal.read.formQuestions(req, res);
+    return response;
   });
 
   return router;
