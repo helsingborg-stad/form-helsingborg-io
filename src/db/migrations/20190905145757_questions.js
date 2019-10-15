@@ -1,7 +1,6 @@
 
 exports.up = (knex, Promise) => knex.schema.createTable('question_types', (t) => {
-  t.increments();
-  t.string('type');
+  t.string('type').primary();
   t.timestamps(true, true);
 });
 
