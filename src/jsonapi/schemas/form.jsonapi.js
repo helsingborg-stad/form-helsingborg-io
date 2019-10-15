@@ -27,6 +27,6 @@ const formJsonApiSchema = {
   topLevelLinks: {
     self: '/forms/',
   },
-}
+};
 
 module.exports = formJsonApiSchema;
