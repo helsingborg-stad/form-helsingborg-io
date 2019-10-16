@@ -4,6 +4,7 @@ const { ResourceNotFoundError } = require('../../utils/error');
 const jsonapi = require('../../jsonapi');
 
 const createErrorResponse = async (error, res) => {
+  // eslint-disable-next-line no-console
   console.log(error)
   logger.error(error);
   const serializedData = await jsonapi.serializer.serializeError(error);
@@ -39,7 +40,7 @@ const readForms = async (req, res) => {
 
     return await createSuccessResponse(queryData, res, 'form', 'queryData');
   } catch (error) {
-    return await createErrorResponse(error, res)
+    return createErrorResponse(error, res)
   }
 };
 
@@ -72,7 +73,7 @@ const readFormQuestions = async (req, res) => {
 
     return await createSuccessResponse(queryData, res, 'question', 'queryData');
   } catch (e) {
-    return createErrorResponse(error, res)
+    return createErrorResponse(e, res)
   }
 };
 
