@@ -4,8 +4,6 @@ const { ResourceNotFoundError } = require('../../utils/error');
 const jsonapi = require('../../jsonapi');
 
 const createErrorResponse = async (error, res) => {
-  // eslint-disable-next-line no-console
-  console.log(error)
   logger.error(error);
   const serializedData = await jsonapi.serializer.serializeError(error);
   return res.status(error.status).json(serializedData);
