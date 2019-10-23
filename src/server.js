@@ -6,7 +6,7 @@ const swaggerUi = require('swagger-ui-express');
 const bodyParser = require('body-parser');
 const jsonSchemaRefParser = require('json-schema-ref-parser');
 const swaggerDocument = require('../swagger/swagger.js');
-const routes = require('./components/form/form.api');
+const routes = require('./components/routes');
 const logger = require('./utils/logger');
 
 const app = express();
