@@ -1,40 +1,25 @@
 const express = require('express');
 const dal = require('./form.dal');
-const { createJsonapiResponse } = require('../../utils/jsonapi');
+const version = require('../../utils/version');
 
 const routes = () => {
   const router = express.Router();
 
-  router.get('/', async (req, res) => res.json({
-    jsonapi: {
-      version: '1.0',
-      meta: {
-        service: 'fromservice-helsingborg-io',
-        owner: 'Helsingborg Stad',
-      },
-    },
-  }));
+  router.get('/', async (req, res) => res.json(version.createApiVersionResponse));
 
-  // Here we register what endpoints we want.
   router.get('/forms', async (req, res) => {
-    try {
-      const data = await dal.query.forms(req);
-      const response = await createJsonapiResponse(req, 'forms', data);
-      return res.json(response);
-    } catch (e) {
-      return res.status(e.status || 500).json(e);
-    }
+    const response = await dal.read.forms(req, res);
+    return response;
   });
 
   router.get('/forms/:id', async (req, res) => {
-    try {
-      const { id } = req.params;
-      const data = await dal.query.form(id);
-      const response = await createJsonapiResponse(req, 'forms', data);
-      return res.json(response);
-    } catch (e) {
-      return res.status(e.status || 500).json(e);
-    }
+    const response = await dal.read.form(req, res);
+    return response;
+  });
+
+  router.get('/forms/:id/questions', async (req, res) => {
+    const response = await dal.read.formQuestions(req, res);
+    return response;
   });
 
   return router;

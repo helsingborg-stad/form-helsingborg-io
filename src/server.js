@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 require('dotenv').config();
 const express = require('express');
 const pino = require('express-pino-logger');
@@ -5,7 +6,7 @@ const swaggerUi = require('swagger-ui-express');
 const bodyParser = require('body-parser');
 const jsonSchemaRefParser = require('json-schema-ref-parser');
 const swaggerDocument = require('../swagger/swagger.js');
-const routes = require('./components/form/form.api');
+const routes = require('./components/routes');
 const logger = require('./utils/logger');
 
 const app = express();
@@ -18,8 +19,15 @@ const { PORT } = process.env;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Request logging
+/**
+ * Logging
+ */
+
 app.use(pino({ logger }));
+
+/**
+ * Routes
+ */
 
 app.use(routes());
 
@@ -39,9 +47,9 @@ jsonSchemaRefParser.dereference(swaggerDocument, (err, schema) => {
 
 /**
  * Start
+ * Listen on port specfied in env-file.
  */
 
-// Listen on port specfied in env-file.
 const server = app.listen(PORT,
   () => logger.info(`Form service listening on port ${PORT}!`));
 
