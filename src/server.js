@@ -19,8 +19,15 @@ const { PORT } = process.env;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Request logging
+/**
+ * Logging
+ */
+
 app.use(pino({ logger }));
+
+/**
+ * Routes
+ */
 
 app.use(routes());
 
@@ -40,9 +47,9 @@ jsonSchemaRefParser.dereference(swaggerDocument, (err, schema) => {
 
 /**
  * Start
+ * Listen on port specfied in env-file.
  */
 
-// Listen on port specfied in env-file.
 const server = app.listen(PORT,
   () => logger.info(`Form service listening on port ${PORT}!`));
 
