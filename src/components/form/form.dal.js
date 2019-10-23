@@ -72,7 +72,6 @@ const readFormQuestions = async (req, res) => {
 
     return await createSuccessResponse(queryData, res, 'question', 'queryData');
   } catch (error) {
-    console.log(error)
     return createErrorResponse(error, res)
   }
 };
