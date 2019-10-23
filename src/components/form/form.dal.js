@@ -4,7 +4,6 @@ const { ResourceNotFoundError } = require('../../utils/error');
 const jsonapi = require('../../jsonapi');
 
 const createErrorResponse = async (error, res) => {
-  console.log(error)
   logger.error(error);
   const serializedData = await jsonapi.serializer.serializeError(error);
   return res.status(error.status).json(serializedData);
@@ -39,7 +38,7 @@ const readForms = async (req, res) => {
 
     return await createSuccessResponse(queryData, res, 'form', 'queryData');
   } catch (error) {
-    return await createErrorResponse(error, res)
+    return createErrorResponse(error, res)
   }
 };
 
