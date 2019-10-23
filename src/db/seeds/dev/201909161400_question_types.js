@@ -14,4 +14,5 @@ exports.seed = (knex, __) => knex('question_types')
     { type: 'textarea' },
     { type: 'select' },
     { type: 'time' },
+    { type: 'info' },
   ]));
