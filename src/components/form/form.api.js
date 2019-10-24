@@ -1,19 +1,11 @@
 const express = require('express');
 const dal = require('./form.dal');
+const version = require('../../utils/version');
 
 const routes = () => {
   const router = express.Router();
 
-  router.get('/', async (req, res) => res.json({
-    jsonapi: {
-      version: '1.0',
-      meta: {
-        service: 'form-helsingborg-io',
-        owner: 'Helsingborg Stad',
-        description: 'Defines templates of questions and answers for each e-service.',
-      },
-    },
-  }));
+  router.get('/', async (req, res) => res.json(version.createApiVersionResponse));
 
   router.get('/forms', async (req, res) => {
     const response = await dal.read.forms(req, res);
