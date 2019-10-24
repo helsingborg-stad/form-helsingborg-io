@@ -7,28 +7,48 @@ const server = require('../../server');
 const should = chai.should();
 chai.use(chaiHttp);
 
-describe('Form', () => {
+describe('api/v1/forms', () => {
   after(async () => {
     server.close();
   });
 
-  it('should return json on GET with faked query', async () => chai
-    .request(server)
-    .get('/forms')
-    .send()
-    .then((res) => {
-      res.should.have.status(200);
-      res.should.be.json;
-      should.exist(res.body);
-    }));
-
-  it('should return json on GET with correct query params at fake', async () => chai
-    .request(server)
-    .get('/forms/1')
-    .send()
-    .then((res) => {
-      res.should.have.status(200);
-      res.should.be.json;
-      should.exist(res.body);
-    }));
+  describe('GET /forms', () => {
+    it('should return all forms', async () => {
+      chai
+        .request(server)
+        .get('/api/v1/forms')
+        .send()
+        .then((res) => {
+          res.should.have.status(200);
+          res.should.be.json;
+          should.exist(res.body);
+        });
+    });
+  });
+  describe('GET /forms/:id', () => {
+    it('should return a single form', async () => {
+      chai
+        .request(server)
+        .get('/api/v1/forms/1')
+        .send()
+        .then((res) => {
+          res.should.have.status(200);
+          res.should.be.json;
+          should.exist(res.body);
+        });
+    });
+  });
+  describe('GET /forms/:id/questions', () => {
+    it('should return all questions for a single form', async () => {
+      chai
+        .request(server)
+        .get('/api/v1/forms/1/questions')
+        .send()
+        .then((res) => {
+          res.should.have.status(200);
+          res.should.be.json;
+          should.exist(res.body);
+        });
+    });
+  });
 });
