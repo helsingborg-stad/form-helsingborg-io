@@ -39,7 +39,7 @@ const readForms = async (req, res) => {
     return await createSuccessResponse(queryData, res, 'form', 'queryData');
   } catch (error) {
     return createErrorResponse(error, res)
-  }
+  };
 };
 
 const readForm = async (req, res) => {
@@ -62,8 +62,10 @@ const readFormQuestions = async (req, res) => {
   try {
     const {id} = req.params
     const queryData = await questions.where('form_id', id).fetchAll({
-      withRelated: ['form', 'validations', 'choices', 'optionGroup', 'type'],
+      withRelated: ['form', 'validations', 'options', 'optionGroup', 'type'],
     });
+
+    console.log(queryData);
 
     if (!queryData) {
       throw new ResourceNotFoundError();

@@ -47,7 +47,6 @@ exports.seed = (knex, __) => knex('questions')
       question_required: true,
       question_multiple_answers: false,
       form_id: 1,
-      option_group_id: 4,
       question_type: 'radio',
     },
     {
@@ -81,6 +80,7 @@ exports.seed = (knex, __) => knex('questions')
       question_required: true,
       question_multiple_answers: false,
       form_id: 1,
+      option_group_id: 1,
       question_type: 'radio',
     },
     {

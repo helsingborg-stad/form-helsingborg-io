@@ -30,8 +30,8 @@ const questionJsonApiSchema = {
       type: 'option',
       links(data) {
         return {
-          self: `${BASE_URL}/questions/${data.id}/relationships/validations`,
-          related: `${BASE_URL}/questions/${data.id}/validations`,
+          self: `${BASE_URL}/questions/${data.id}/relationships/options`,
+          related: `${BASE_URL}/questions/${data.id}/options`,
         };
       },
     },
@@ -46,7 +46,6 @@ const questionJsonApiSchema = {
   // An object or a function that describes top level links.
     self: `${BASE_URL}/questions`, // Can be a function (with extra data argument) or a string value
   },
-}
-
+};
 
 module.exports = questionJsonApiSchema;
