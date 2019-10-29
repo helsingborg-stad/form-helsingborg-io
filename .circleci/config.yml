@@ -80,7 +80,7 @@ jobs:
       - image: circleci/mysql:5.7.26
         environment:
           MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: userDataDB
+          MYSQL_DATABASE: form_helsingborg_io
           MYSQL_USER: user
           MYSQL_PASSWORD: password
     steps:
