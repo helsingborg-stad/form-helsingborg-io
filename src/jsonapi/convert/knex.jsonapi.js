@@ -8,7 +8,6 @@ const createDataObject = (data) => {
     // eslint-disable-next-line array-callback-return
     Object.keys(relations).map((key) => {
       const relation = relations[key];
-      console.log(relation);
       if (relation.length > 0) {
         resourceData[key] = relation.map(item => ({ ...item.attributes }));
       } else {
@@ -28,7 +27,6 @@ const createObjectFromKnexQuery = (data) => {
   } else {
     dataObject = createDataObject(data);
   }
-  console.log(dataObject);
   return dataObject;
 };
 

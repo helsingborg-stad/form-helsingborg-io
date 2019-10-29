@@ -65,8 +65,6 @@ const readFormQuestions = async (req, res) => {
       withRelated: ['form', 'validations', 'options', 'optionGroup', 'type'],
     });
 
-    console.log(queryData);
-
     if (!queryData) {
       throw new ResourceNotFoundError();
     }
