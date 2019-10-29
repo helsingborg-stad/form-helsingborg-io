@@ -13,7 +13,7 @@ const Questions = bookshelf.Model.extend({
   form() { return this.belongsTo(Forms); },
   validations() { return this.belongsToMany(Validations); },
   optionGroup() { return this.belongsTo(OptionGroups); },
-  choices() { return this.belongsToMany(OptionChoices); },
+  options() { return this.belongsToMany(OptionChoices); },
   type() { return this.belongsTo(QuestionTypes); },
 });
 
