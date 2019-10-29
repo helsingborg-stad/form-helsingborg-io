@@ -1,6 +1,6 @@
 {
   "name": "form-helsingborg-io",
-  "version": "0.0.1",
+  "version": "0.0.2-beta.0",
   "description": "Boilerplate repository for nodejs based LABS projects.",
   "main": "server.js",
   "scripts": {
@@ -9,8 +9,8 @@
     "test": "NODE_ENV=test ./node_modules/.bin/mocha src/components/**/*.test.js",
     "test:watch": "./node_modules/.bin/mocha src/components/**/*.test.js --watch",
     "lint": "./node_modules/eslint/bin/eslint.js src/**",
-    "migrate:latest": "./node_modules/.bin/knex --cwd src/db/ migrate:latest",
-    "migrate:rollback": "./node_modules/.bin/knex --cwd src/db/ migrate:rollback",
+    "migrate:latest": "./node_modules/.bin/knex migrate:latest",
+    "migrate:rollback": "./node_modules/.bin/knex migrate:rollback",
     "seed:run": "./node_modules/.bin/knex seed:run",
     "setup": "node setup.js"
   },
