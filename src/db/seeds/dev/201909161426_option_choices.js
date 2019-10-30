@@ -25,4 +25,6 @@ exports.seed = (knex, __) => knex('option_choices')
     { option_group_id: 4, option_choice_name: '7-9' },
     { option_group_id: 4, option_choice_name: '10-12' },
     { option_group_id: 4, option_choice_name: '13-15' },
+    { option_choice_name: 'Rådhuset' },
+    { option_choice_name: 'Annan plats' },
   ]));
