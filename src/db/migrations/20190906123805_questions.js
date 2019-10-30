@@ -3,7 +3,8 @@ exports.up = (knex, Promise) => knex.schema.createTable('questions', (t) => {
   t.increments();
   t.text('question_name');
   t.text('question_description');
-  t.text('question_palceholder');
+  t.text('question_info');
+  t.text('question_placeholder');
   t.integer('question_position');
 
   t.boolean('question_required');
