@@ -12,9 +12,9 @@ const Questions = bookshelf.Model.extend({
   tableName: 'questions',
   form() { return this.belongsTo(Forms); },
   validations() { return this.belongsToMany(Validations); },
-  optionGroup() { return this.belongsTo(OptionGroups); },
   options() { return this.belongsToMany(OptionChoices); },
   type() { return this.belongsTo(QuestionTypes); },
+  logics() { return this.hasOne(Logics, ['trigger_question']); },
 });
 
 const QuestionTypes = bookshelf.Model.extend({
@@ -37,6 +37,17 @@ const OptionChoices = bookshelf.Model.extend({
   questions() { return this.belongsToMany(Questions); },
 });
 
+const Logics = bookshelf.Model.extend({
+  tableName: 'logics',
+  question() { return this.belongsTo(Questions); },
+  actions() { return this.hasMany(LogicActions)}
+})
+
+const LogicActions = bookshelf.Model.extend({
+  tableName: 'logic_actions',
+  logic() { return this.belongsTo(Logic)}
+})
+
 module.exports = {
   forms: bookshelf.model('Forms', Forms),
   questions: bookshelf.model('Questions', Questions),
@@ -44,4 +55,6 @@ module.exports = {
   validations: bookshelf.model('Validations', Validations),
   optionGroups: bookshelf.model('OptionGroups', OptionGroups),
   optionChoices: bookshelf.model('OptionChoices', OptionChoices),
+  logics: bookshelf.model('Logics', Logics),
+  logicActions: bookshelf.model('LogicActions', LogicActions)
 };
