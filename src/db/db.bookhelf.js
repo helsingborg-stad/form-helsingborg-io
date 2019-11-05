@@ -45,7 +45,7 @@ const Logics = bookshelf.Model.extend({
 
 const LogicActions = bookshelf.Model.extend({
   tableName: 'logic_actions',
-  logic() { return this.belongsTo(Logic)}
+  logic() { return this.belongsTo(Logics)}
 })
 
 module.exports = {
