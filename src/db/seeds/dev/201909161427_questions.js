@@ -140,7 +140,6 @@ exports.seed = (knex, __) => knex('questions')
     },
     {
       question_position: 16,
-      question_info: 'Innan ni gifter er måste Skatteverket intyga att det inte finns några hinder för giftermål.',
       question_placeholder: 'Test placeholder',
       question_name: 'Har ni intyg för hindersprövning från Skatteverket?',
       question_info:'Innan ni gifter er måste Skatteverket göra en hindersprövning, för att se till att det inte finns några hinder för äktenskapet. Ni ansöker om hindersprövning genom att fylla i en blankett som ni skickar till Skatteverket. Du hittar blanketten, och mer information om hindersprövning, på Skatteverkets webbplats.',
