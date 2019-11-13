@@ -64,7 +64,6 @@ const readFormQuestions = async (req, res) => {
     const queryData = await questions.where('form_id', id).fetchAll({
       withRelated: ['form', 'validations', 'options', 'type', 'logics.actions'],
     });
-    
     if (!queryData) {
       throw new ResourceNotFoundError();
     }
